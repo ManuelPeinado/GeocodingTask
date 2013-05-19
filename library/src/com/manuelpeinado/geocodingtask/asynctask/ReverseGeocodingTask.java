@@ -1,4 +1,4 @@
-package com.manuelpeinado.geocodingtask;
+package com.manuelpeinado.geocodingtask.asynctask;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,6 +8,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
+
+import com.manuelpeinado.geocodingtask.listener.ReverseGeocodingListener;
 
 public class ReverseGeocodingTask extends AsyncTask<Location, Void, Address> {
 

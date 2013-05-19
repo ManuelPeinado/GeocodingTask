@@ -1,4 +1,4 @@
-package com.manuelpeinado.geocodingtask;
+package com.manuelpeinado.geocodingtask.asynctask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,13 +8,16 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 
+import com.manuelpeinado.geocodingtask.listener.GeocodingListener;
+
 public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
 
     private static final int MAX_RESULTS = 10;
     private Activity mActivity;
     private GeocodingListener mListener;
     private String mAddressText;
-    private boolean mockSlowProgress = false;
+    private boolean mMockSlowProgress;
+    private boolean mSelectFirstResult;
 
     public GeocodingTask() {
         this(null);
@@ -38,7 +41,7 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
 
     @Override
     protected ArrayList<Address> doInBackground(String... params) {
-        if (mockSlowProgress) {
+        if (mMockSlowProgress) {
             sleep(3000);
         }
         Geocoder geocoder = new Geocoder(mActivity);
@@ -50,7 +53,7 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
         }
         return null;
     }
-    
+
     static void sleep(int millis) {
         try {
             Thread.sleep(millis);
@@ -67,16 +70,35 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
         if (results == null || results.size() == 0) {
             mListener.onGeocodingFailure(this);
         } else {
-            mListener.onGeocodingSuccess(this, results);
+            if (mSelectFirstResult) {
+                mListener.onGeocodingSuccess(this, selectFirst(results));
+            } else {
+                mListener.onGeocodingSuccess(this, results);
+            }
         }
     }
 
     public void cancel() {
         cancel(true);
     }
-    
+
     @Override
     protected void onCancelled(ArrayList<Address> result) {
         mListener.onGeocodingCanceled(this);
     }
+
+    public boolean isSelectFirstResult() {
+        return mSelectFirstResult;
+    }
+
+    public void setSelectFirstResult(boolean selectFirstResult) {
+        this.mSelectFirstResult = selectFirstResult;
+    }
+
+    private static ArrayList<Address> selectFirst(ArrayList<Address> items) {
+        ArrayList<Address> result = new ArrayList<Address>(1);
+        result.add(items.get(0));
+        return result;
+    }
+
 }

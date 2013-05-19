@@ -1,4 +1,4 @@
-package com.manuelpeinado.geocodingtask;
+package com.manuelpeinado.geocodingtask.fragment;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,9 @@ import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+
+import com.manuelpeinado.geocodingtask.asynctask.GeocodingTask;
+import com.manuelpeinado.geocodingtask.listener.GeocodingListener;
 
 public class GeocodingFragment extends Fragment implements GeocodingListener {
     private GeocodingTask mTask;

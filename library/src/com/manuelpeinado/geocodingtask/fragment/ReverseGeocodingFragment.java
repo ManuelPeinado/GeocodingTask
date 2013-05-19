@@ -1,10 +1,13 @@
-package com.manuelpeinado.geocodingtask;
+package com.manuelpeinado.geocodingtask.fragment;
 
 import android.app.Activity;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.manuelpeinado.geocodingtask.asynctask.ReverseGeocodingTask;
+import com.manuelpeinado.geocodingtask.listener.ReverseGeocodingListener;
 
 public class ReverseGeocodingFragment extends Fragment implements ReverseGeocodingListener {
     private ReverseGeocodingTask mTask;

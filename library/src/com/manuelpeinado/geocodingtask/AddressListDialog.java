@@ -12,6 +12,8 @@ import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+import com.manuelpeinado.geocodingtask.listener.GeocodingListener;
+
 public class AddressListDialog extends DialogFragment {
     private GeocodingListener mListener;
     private AddressFormatter mAddressFormatter = new DefaultAddressFormatter();
