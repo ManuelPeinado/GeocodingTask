@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GeocodingTast demo</string>
+    <string name="activity_title_direct_geocoding">Direct geocoding</string>
+    <string name="activity_title_reverse_geocoding">Reverse geocoding</string>
+    <string name="enter_address">Enter address</string>
+    <string name="geocode_address">Geocode address</string>
+    <string name="geocoding_error_toast">Could not resolve location</string>
+    <string name="geocoding_canceled_toast">Operation was canceled</string>
+    <string name="could_not_load_map">Could not load map</string>
+
+</resources>
