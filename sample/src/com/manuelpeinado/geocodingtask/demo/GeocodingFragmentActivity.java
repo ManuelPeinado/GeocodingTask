@@ -18,10 +18,10 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.manuelpeinado.geocodingtask.AddressListDialog;
 import com.manuelpeinado.geocodingtask.DefaultAddressFormatter;
-import com.manuelpeinado.geocodingtask.GeocodingFragment;
-import com.manuelpeinado.geocodingtask.GeocodingListener;
+import com.manuelpeinado.geocodingtask.fragment.GeocodingFragment;
+import com.manuelpeinado.geocodingtask.listener.GeocodingListener;
 
-public class DirectGeocodingActivity extends SherlockFragmentActivity implements GeocodingListener {
+public class GeocodingFragmentActivity extends SherlockFragmentActivity implements GeocodingListener {
 
     private static final String GEOCODING_FRAGMENT = "geocoding";
     private static final String ADDRESS_LIST_DIALOG = "addressListDialog";
@@ -84,13 +84,13 @@ public class DirectGeocodingActivity extends SherlockFragmentActivity implements
 
     @Override
     public void onGeocodingSuccess(Object sender, ArrayList<Address> result) {
+        cleanUpAfterGeocoding();
         if (result.size() == 1) {
             String fmt = "Lat: %s, lon: %s";
             Address address = result.get(0);
             String text = String.format(fmt, address.getLatitude(), address.getLongitude());
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
             mEditText.setText(DefaultAddressFormatter.format(address, ", "));
-            cleanUpAfterGeocoding();
         } else {
             showDisambiguationDialog(result);
         }

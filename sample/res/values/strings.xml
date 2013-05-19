@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">GeocodingTast demo</string>
-    <string name="activity_title_direct_geocoding">Direct geocoding</string>
-    <string name="activity_title_reverse_geocoding">Reverse geocoding</string>
+    <string name="activity_title_geocoding_fragment">Direct geocoding (fragment)</string>
+    <string name="activity_title_reverse_geocoding_fragment">Reverse geocoding (fragment)</string>
+    <string name="activity_title_geocoding_service">Direct geocoding (service)</string>
+    <string name="activity_title_reverse_geocoding_service">Reverse geocoding (service)</string>
     <string name="enter_address">Enter address</string>
     <string name="geocode_address">Geocode address</string>
     <string name="geocoding_error_toast">Could not resolve location</string>

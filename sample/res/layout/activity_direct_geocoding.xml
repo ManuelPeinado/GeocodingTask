@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/vertical_margin_medium"
-    tools:context=".DirectGeocodingActivity" >
+    tools:context=".GeocodingFragmentActivity" >
 
     <TextView
         android:layout_width="match_parent"

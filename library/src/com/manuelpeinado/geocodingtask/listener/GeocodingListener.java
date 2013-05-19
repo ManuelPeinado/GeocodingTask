@@ -7,7 +7,7 @@ import android.location.Address;
 public interface GeocodingListener {
     void onGeocodingSuccess(Object sender, ArrayList<Address> result);
 
-    void onGeocodingFailure(Object geocodingTask);
+    void onGeocodingFailure(Object sender);
 
-    void onGeocodingCanceled(Object geocodingTask);
+    void onGeocodingCanceled(Object sender);
 }

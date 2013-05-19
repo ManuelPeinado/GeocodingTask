@@ -39,11 +39,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.manuelpeinado.geocodingtask.demo.DirectGeocodingActivity"
-            android:label="@string/activity_title_direct_geocoding" />
+            android:name="com.manuelpeinado.geocodingtask.demo.GeocodingFragmentActivity"
+            android:label="@string/activity_title_geocoding_fragment" />
         <activity
-            android:name="com.manuelpeinado.geocodingtask.demo.ReverseGeocodingActivity"
-            android:label="@string/activity_title_reverse_geocoding" />
+            android:name="com.manuelpeinado.geocodingtask.demo.ReverseGeocodingFragmentActivity"
+            android:label="@string/activity_title_reverse_geocoding_fragment" />
+        <activity
+            android:name="com.manuelpeinado.geocodingtask.demo.GeocodingServiceActivity"
+            android:label="@string/activity_title_reverse_geocoding_service" />
+
+        <service
+            android:name="com.manuelpeinado.geocodingtask.service.GeocodingService"
+            android:enabled="true" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

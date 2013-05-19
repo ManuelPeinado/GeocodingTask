@@ -20,10 +20,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.manuelpeinado.geocodingtask.DefaultAddressFormatter;
-import com.manuelpeinado.geocodingtask.ReverseGeocodingFragment;
-import com.manuelpeinado.geocodingtask.ReverseGeocodingListener;
+import com.manuelpeinado.geocodingtask.fragment.ReverseGeocodingFragment;
+import com.manuelpeinado.geocodingtask.listener.ReverseGeocodingListener;
 
-public class ReverseGeocodingActivity extends SherlockFragmentActivity implements OnMapClickListener,
+public class ReverseGeocodingFragmentActivity extends SherlockFragmentActivity implements OnMapClickListener,
         ReverseGeocodingListener, OnMyLocationChangeListener {
 
     private static final String REVERSE_GEOCODING_FRAGMENT = "reverseGeocoding";

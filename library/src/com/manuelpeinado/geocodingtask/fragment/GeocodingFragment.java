@@ -42,7 +42,7 @@ public class GeocodingFragment extends Fragment implements GeocodingListener {
             mTask.setListener(this);
         }
 
-        mTask.setActivity((FragmentActivity)activity);
+        mTask.setContext((FragmentActivity)activity);
         mListener = (GeocodingListener) activity;
 
         if (firstTime) {

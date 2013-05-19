@@ -3,7 +3,7 @@ package com.manuelpeinado.geocodingtask.asynctask;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import android.app.Activity;
+import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -13,22 +13,22 @@ import com.manuelpeinado.geocodingtask.listener.GeocodingListener;
 public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
 
     private static final int MAX_RESULTS = 10;
-    private Activity mActivity;
+    private Context mContext;
     private GeocodingListener mListener;
     private String mAddressText;
-    private boolean mMockSlowProgress;
+    private boolean mMockSlowProgress = true;
     private boolean mSelectFirstResult;
 
     public GeocodingTask() {
         this(null);
     }
 
-    public GeocodingTask(Activity activity) {
-        this.mActivity = activity;
+    public GeocodingTask(Context context) {
+        this.mContext = context;
     }
 
-    public void setActivity(Activity activity) {
-        this.mActivity = activity;
+    public void setContext(Context context) {
+        this.mContext = context;
     }
 
     public void setListener(GeocodingListener listener) {
@@ -39,19 +39,23 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
         return mAddressText;
     }
 
-    @Override
-    protected ArrayList<Address> doInBackground(String... params) {
+    public ArrayList<Address> executeSync(String addressText) {
         if (mMockSlowProgress) {
-            sleep(3000);
+            sleep(5000);
         }
-        Geocoder geocoder = new Geocoder(mActivity);
+        Geocoder geocoder = new Geocoder(mContext);
         try {
-            mAddressText = params[0];
+            mAddressText = addressText;
             return new ArrayList<Address>(geocoder.getFromLocationName(mAddressText, MAX_RESULTS));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    protected ArrayList<Address> doInBackground(String... params) {
+        return executeSync(params[0]);
     }
 
     static void sleep(int millis) {
