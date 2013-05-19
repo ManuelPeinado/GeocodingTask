@@ -3,15 +3,15 @@ package com.manuelpeinado.geocodingtask;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 
 public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
 
     private static final int MAX_RESULTS = 10;
-    private FragmentActivity mActivity;
+    private Activity mActivity;
     private GeocodingListener mListener;
     private String mAddressText;
     private boolean mockSlowProgress = false;
@@ -20,11 +20,11 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
         this(null);
     }
 
-    public GeocodingTask(FragmentActivity activity) {
+    public GeocodingTask(Activity activity) {
         this.mActivity = activity;
     }
 
-    public void setActivity(FragmentActivity activity) {
+    public void setActivity(Activity activity) {
         this.mActivity = activity;
     }
 
