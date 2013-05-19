@@ -71,7 +71,8 @@ public class GeocodingTask extends AsyncTask<String, Void, ArrayList<Address>> {
         if (mListener == null) {
             return;
         }
-        if (results == null || results.size() == 0) {
+        if (results == null || results.size(
+                ) == 0) {
             mListener.onGeocodingFailure(this);
         } else {
             if (mSelectFirstResult) {

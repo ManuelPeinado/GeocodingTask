@@ -72,7 +72,7 @@ public class ReverseGeocodingFragment extends Fragment implements ReverseGeocodi
         }
     }
 
-    private static Location newLocation(double lat, double lng) {
+    public static Location newLocation(double lat, double lng) {
         Location result = new Location("");
         result.setLatitude(lat);
         result.setLongitude(lng);

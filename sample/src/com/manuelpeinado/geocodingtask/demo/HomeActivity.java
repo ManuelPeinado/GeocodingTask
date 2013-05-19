@@ -31,7 +31,8 @@ public class HomeActivity extends SherlockListActivity {
     private List<ActivityInfo> activitiesInfo = Arrays.asList(
             new ActivityInfo(GeocodingFragmentActivity.class, R.string.activity_title_geocoding_fragment), 
             new ActivityInfo(ReverseGeocodingFragmentActivity.class, R.string.activity_title_reverse_geocoding_fragment),
-            new ActivityInfo(GeocodingServiceActivity.class, R.string.activity_title_geocoding_service));
+            new ActivityInfo(GeocodingServiceActivity.class, R.string.activity_title_geocoding_service),
+            new ActivityInfo(ReverseGeocodingServiceActivity.class, R.string.activity_title_reverse_geocoding_service));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

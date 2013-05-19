@@ -18,7 +18,7 @@ public class ReverseGeocodingTask extends AsyncTask<Location, Void, Address> {
     private ReverseGeocodingListener mListener;
     private Location mLocation;
     private boolean mockFailure;
-    private boolean mockSlowProgress;
+    private boolean mockSlowProgress = true;
 
     public ReverseGeocodingTask(Context context) {
         this.mContext = context;
@@ -31,9 +31,8 @@ public class ReverseGeocodingTask extends AsyncTask<Location, Void, Address> {
     public Location getLocation() {
         return mLocation;
     }
-
-    @Override
-    protected Address doInBackground(Location... params) {
+    
+    public Address executeSync(Location location) {
         if (mockFailure) {
             GeocodingTask.sleep(2000);
             return null;
@@ -44,7 +43,7 @@ public class ReverseGeocodingTask extends AsyncTask<Location, Void, Address> {
         Geocoder geocoder = new Geocoder(mContext);
         List<Address> results;
         try {
-            mLocation = params[0];
+            mLocation = location;
             results = geocoder.getFromLocation(mLocation.getLatitude(), mLocation.getLongitude(), 1);
             if (results.size() > 0) {
                 return results.get(0);
@@ -53,6 +52,12 @@ public class ReverseGeocodingTask extends AsyncTask<Location, Void, Address> {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    @Override
+    protected Address doInBackground(Location... params) {
+        return executeSync(params[0]);
     }
 
     @Override
