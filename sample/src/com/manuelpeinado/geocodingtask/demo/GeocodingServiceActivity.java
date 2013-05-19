@@ -10,6 +10,7 @@ import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -36,6 +37,10 @@ public class GeocodingServiceActivity extends SherlockFragmentActivity implement
     private class GeocodingReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            String query = intent.getStringExtra(GeocodingService.PARAM_IN_ADDRESS_TEXT);
+            if (!TextUtils.equals(query, mLastQuery)) {
+                return;
+            }
             boolean success = intent.getBooleanExtra(GeocodingService.PARAM_OUT_SUCCESS, false);
             if (success) {
                 ArrayList<Address> addressList = intent
