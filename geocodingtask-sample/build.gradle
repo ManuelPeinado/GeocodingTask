@@ -1,0 +1,16 @@
+apply plugin: 'android'
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    compile project(':geocodingtask')
+    compile 'com.actionbarsherlock:actionbarsherlock:4.3.+'
+    compile 'com.google.android.gms:play-services:3.1.+'
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion '18.0.0'
+}
